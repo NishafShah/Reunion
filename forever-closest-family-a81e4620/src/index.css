@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 350 80% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 350 80% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 350 80% 10%;
+
+    --primary: 350 75% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 350 60% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 350 15% 96%;
+    --muted-foreground: 350 20% 40%;
+
+    --accent: 350 80% 25%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 350 20% 90%;
+    --input: 350 20% 90%;
+    --ring: 350 75% 30%;
+
+    --radius: 0.75rem;
+
+    /* Custom Colors - Maroon Theme */
+    --maroon: 350 75% 30%;
+    --maroon-light: 350 60% 95%;
+    --maroon-dark: 350 80% 20%;
+    --burgundy: 350 70% 35%;
+    --burgundy-light: 350 60% 92%;
+    --gold: 40 80% 55%;
+    --gold-light: 40 80% 92%;
+    --cream: 40 30% 97%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(350 75% 30% / 0.08), hsl(350 60% 45% / 0.05), hsl(0 0% 100%));
+    --gradient-primary: linear-gradient(135deg, hsl(350 75% 30%), hsl(350 60% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(350 80% 25%), hsl(350 75% 35%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(350 15% 98%));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(350 75% 30% / 0.15);
+    --shadow-card: 0 8px 30px -8px hsl(350 75% 30% / 0.2);
+    --shadow-hover: 0 12px 40px -8px hsl(350 75% 30% / 0.25);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 350 80% 10%;
+    --sidebar-primary: 350 75% 30%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 350 15% 95%;
+    --sidebar-accent-foreground: 350 80% 10%;
+    --sidebar-border: 350 20% 91%;
+    --sidebar-ring: 350 75% 30%;
+  }
+
+  .dark {
+    --background: 350 20% 6%;
+    --foreground: 350 10% 95%;
+
+    --card: 350 20% 10%;
+    --card-foreground: 350 10% 95%;
+
+    --popover: 350 20% 10%;
+    --popover-foreground: 350 10% 95%;
+
+    --primary: 350 65% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 350 55% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 350 15% 16%;
+    --muted-foreground: 350 10% 65%;
+
+    --accent: 350 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 350 15% 18%;
+    --input: 350 15% 18%;
+    --ring: 350 65% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .gradient-bg {
+    background: var(--gradient-hero);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-shadow-hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-lg border border-border/50;
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-pulse-soft {
+    animation: pulseSoft 3s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.7);
+}
